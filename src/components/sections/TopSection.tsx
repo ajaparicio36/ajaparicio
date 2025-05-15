@@ -22,9 +22,6 @@ export default function TopSection() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Calculate background opacity - fade out as user scrolls down
-  const backgroundOpacity = Math.max(0, 1 - scrollY / 500);
-
   const roles = [
     "Software Engineer",
     "Web Developer",

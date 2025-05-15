@@ -129,7 +129,7 @@ export default function Footer() {
             </h2>
 
             <div className="grid grid-cols-2 gap-4">
-              {socialLinks.map((link, index) => (
+              {socialLinks.map((link) => (
                 <Link
                   key={link.name}
                   href={link.url}

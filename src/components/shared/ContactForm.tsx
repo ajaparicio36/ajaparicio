@@ -95,7 +95,7 @@ export default function ContactForm() {
           </svg>
           <h3 className="text-xl font-calsans mb-2">Message Sent!</h3>
           <p className="font-roboto mb-4">
-            Thank you for reaching out. I'll get back to you soon.
+            {"Thank you for reaching out. I'll get back to you soon."}
           </p>
           <Button onClick={() => setIsSubmitted(false)}>
             Send Another Message
