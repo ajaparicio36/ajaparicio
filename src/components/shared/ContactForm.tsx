@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { motion } from "motion/react";
+import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
 import { Button } from "../ui/button";
 import {

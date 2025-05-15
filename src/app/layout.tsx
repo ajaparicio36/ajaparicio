@@ -43,7 +43,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en" className="dark scroll-smooth">
+      <head>
+        {/* Simplified background fallback */}
+        <style
+          dangerouslySetInnerHTML={{
+            __html: `
+            body {
+              background-color: black;
+              position: relative;
+            }
+          `,
+          }}
+        />
+      </head>
       <body
         className={`${orbitron.variable} ${calSans.variable} ${roboto.variable} antialiased bg-background text-foreground font-roboto`}
       >

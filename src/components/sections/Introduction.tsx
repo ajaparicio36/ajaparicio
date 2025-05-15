@@ -1,25 +1,28 @@
 "use client";
 
 import React from "react";
-import { motion } from "motion/react";
+import { motion } from "framer-motion";
 import Image from "next/image";
 
 export default function Introduction() {
   return (
-    <section className="relative py-20 overflow-hidden">
-      <div className="container mx-auto px-4">
-        <div className="relative flex flex-col md:flex-row gap-8">
+    <section
+      id="introduction-section"
+      className="relative py-20 overflow-hidden min-h-screen flex items-center"
+    >
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="relative flex flex-col md:flex-row gap-8 items-center">
           {/* Background Image with Overlay */}
-          <div className="absolute inset-0 opacity-20 z-0">
-            <div className="relative w-full h-full">
+          <div className="absolute inset-0 opacity-30 z-0 flex justify-center items-center">
+            <div className="relative w-[clamp(280px,40vw,350px)] h-[clamp(420px,60vh,525px)]">
               <Image
                 src="/aj.png"
                 alt="AJ Aparicio"
                 fill
-                className="object-cover object-center"
+                className="object-cover object-top"
+                sizes="(max-width: 768px) 40vw, 350px"
                 priority
               />
-              <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black"></div>
             </div>
           </div>
 

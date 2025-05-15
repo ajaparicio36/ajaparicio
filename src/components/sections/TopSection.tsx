@@ -1,10 +1,30 @@
 "use client";
 
-import React from "react";
-import { motion } from "motion/react";
-import AnimatedBackground from "../shared/AnimatedBackground";
+import React, { useEffect, useState, useRef } from "react";
+import { motion } from "framer-motion";
+import StaticBackground from "../shared/StaticBackground";
 
 export default function TopSection() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const [scrollY, setScrollY] = useState(0);
+
+  // Update scroll position for background opacity calculation
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+
+    // Initial check
+    handleScroll();
+
+    // Add scroll listener
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Calculate background opacity - fade out as user scrolls down
+  const backgroundOpacity = Math.max(0, 1 - scrollY / 500);
+
   const roles = [
     "Software Engineer",
     "Web Developer",
@@ -14,8 +34,17 @@ export default function TopSection() {
   ];
 
   return (
-    <section className="relative h-screen flex items-center justify-center overflow-hidden">
-      <AnimatedBackground />
+    <section
+      ref={sectionRef}
+      className="relative h-screen flex items-center justify-center overflow-hidden"
+    >
+      {/* Add the background to TopSection */}
+      <div
+        className="absolute inset-0 transition-opacity duration-300"
+        style={{ opacity: backgroundOpacity }}
+      >
+        <StaticBackground />
+      </div>
 
       <div className="container mx-auto px-4 z-10">
         <motion.div
