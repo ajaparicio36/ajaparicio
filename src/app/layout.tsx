@@ -45,13 +45,20 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark scroll-smooth">
       <head>
-        {/* Simplified background fallback */}
         <style
           dangerouslySetInnerHTML={{
             __html: `
             body {
-              background-color: black;
+              background-color: black !important;
               position: relative;
+              min-height: 100vh;
+              width: 100%;
+              overflow-x: hidden;
+            }
+            
+            /* Ensure background elements are visible */
+            #root-background {
+              z-index: -100 !important;
             }
           `,
           }}

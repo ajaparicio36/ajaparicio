@@ -1,12 +1,13 @@
 "use client";
 
 import React, { useRef, useEffect, useState } from "react";
-import { motion, useScroll, useTransform, useInView } from "framer-motion";
+import { motion, useScroll, useInView } from "framer-motion";
 import TopSection from "@/components/sections/TopSection";
 import Introduction from "@/components/sections/Introduction";
 import Technologies from "@/components/sections/Technologies";
 import Projects from "@/components/sections/Projects";
 import Footer from "@/components/layout/Footer";
+import StaticBackground from "@/components/shared/StaticBackground";
 
 // Section wrapper component for scroll animations
 const Section = ({
@@ -26,7 +27,7 @@ const Section = ({
       initial={{ opacity: 0 }}
       animate={isInView ? { opacity: 1 } : { opacity: 0 }}
       transition={{ duration: 0.8 }}
-      className="min-h-screen"
+      className="min-h-screen relative z-10"
     >
       {children}
     </motion.div>
@@ -35,53 +36,54 @@ const Section = ({
 
 export default function Home() {
   const { scrollYProgress } = useScroll();
-  const scrollRef = useRef<HTMLDivElement>(null);
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
     setIsMounted(true);
   }, []);
 
-  // Only render motion components on the client
-  if (!isMounted) {
-    return (
-      <div className="bg-black text-foreground min-h-screen">
-        <TopSection />
-        <Introduction />
-        <Technologies />
-        <Projects />
-        <Footer />
-      </div>
-    );
-  }
-
   return (
-    <div ref={scrollRef} className="bg-black text-foreground">
-      {/* Progress bar */}
-      <motion.div
-        className="fixed top-0 left-0 right-0 h-1 bg-primary z-50"
-        style={{ scaleX: scrollYProgress }}
-      />
+    <>
+      {/* Background only for the top section */}
+      <StaticBackground />
 
-      <Section id="home">
-        <TopSection />
-      </Section>
+      {!isMounted ? (
+        <div className="bg-black/0 text-foreground min-h-screen relative z-10">
+          <TopSection />
+          <Introduction />
+          <Technologies />
+          <Projects />
+          <Footer />
+        </div>
+      ) : (
+        <div className="bg-black/0 text-foreground relative z-10">
+          {/* Progress bar */}
+          <motion.div
+            className="fixed top-0 left-0 right-0 h-1 bg-primary z-50"
+            style={{ scaleX: scrollYProgress }}
+          />
 
-      <Section id="about">
-        <Introduction />
-      </Section>
+          <Section id="home">
+            <TopSection />
+          </Section>
 
-      <Section id="technologies">
-        <Technologies />
-      </Section>
+          <Section id="about">
+            <Introduction />
+          </Section>
 
-      <Section id="projects">
-        <Projects />
-      </Section>
+          <Section id="technologies">
+            <Technologies />
+          </Section>
 
-      <div className="relative bg-black">
-        <Footer />
-      </div>
-    </div>
+          <Section id="projects">
+            <Projects />
+          </Section>
+
+          <div className="relative z-10">
+            <Footer />
+          </div>
+        </div>
+      )}
+    </>
   );
 }

@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState, useRef } from "react";
 import { motion } from "framer-motion";
-import StaticBackground from "../shared/StaticBackground";
+// Removed the StaticBackground import as it's now handled at the page level
 
 export default function TopSection() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -38,13 +38,7 @@ export default function TopSection() {
       ref={sectionRef}
       className="relative h-screen flex items-center justify-center overflow-hidden"
     >
-      {/* Add the background to TopSection */}
-      <div
-        className="absolute inset-0 transition-opacity duration-300"
-        style={{ opacity: backgroundOpacity }}
-      >
-        <StaticBackground />
-      </div>
+      {/* Removed duplicate StaticBackground component */}
 
       <div className="container mx-auto px-4 z-10">
         <motion.div
