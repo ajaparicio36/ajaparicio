@@ -14,6 +14,8 @@ export default function TopSection() {
       setScrollY(window.scrollY);
     };
 
+    console.log(scrollY);
+
     // Initial check
     handleScroll();
 
