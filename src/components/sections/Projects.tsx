@@ -10,7 +10,7 @@ export default function Projects() {
       title: "SnapScore",
       description:
         "An application with both a web version, and downloadable mobile version. It aims to help instructors correct the paper of their students by using Artificial Intelligence to scan and correct those papers.",
-      image: "https://placehold.co/800x450/3a3a3a/FFFFFF?text=SnapScore",
+      image: "/projects/1.png",
       technologies: [
         "Flutter",
         "Next.js",
@@ -24,27 +24,27 @@ export default function Projects() {
       title: "POS with Back Office",
       description:
         "A completely customized POS application that comes with a back office to control what products to display, along with employee management for shifts, and sales, bills, and profit checking and management.",
-      image: "https://placehold.co/800x450/3a3a3a/FFFFFF?text=POS+System",
+      image: "/projects/2.png",
       technologies: ["Flutter", "Next.js", "Nest.js", "PostgreSQL", "Vercel"],
     },
     {
       title: "Raspberry Pi Fire and Flood Detection System",
       description:
         "A natural disaster detection system that utilizes yolov5 and computer vision to detect fire, with water and rain sensors to detect flood, all deployed on a Raspberry Pi. It comes with a UI accessible to the local network.",
-      image: "https://placehold.co/800x450/3a3a3a/FFFFFF?text=Detection+System",
+      image: "/projects/4.png",
       technologies: ["Python", "YOLOv5", "PiOS", "Vue.js"],
     },
     {
       title: "RawMats",
       description: "An online directory to display the products of MSMEs.",
-      image: "https://placehold.co/800x450/3a3a3a/FFFFFF?text=RawMats",
+      image: "/projects/3.png",
       technologies: ["Next.js", "PostgreSQL", "Supabase"],
     },
     {
       title: "DevMatch",
       description:
         "A platform for clients to match with software developers for their online needs.",
-      image: "https://placehold.co/800x450/3a3a3a/FFFFFF?text=DevMatch",
+      image: "/projects/5.png",
       technologies: ["Firebase", "Supabase Auth", "Next.js"],
     },
   ];
