@@ -1,15 +1,33 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import localFont from "next/font/local";
+import { Roboto } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+const orbitron = localFont({
+  src: [
+    {
+      path: "./fonts/Orbitron.ttf",
+      weight: "400",
+      style: "normal",
+    },
+  ],
+  variable: "--font-orbitron",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const calSans = localFont({
+  src: [
+    {
+      path: "./fonts/CalSans.ttf",
+      weight: "400",
+      style: "normal",
+    },
+  ],
+  variable: "--font-cal-sans",
+});
+
+const roboto = Roboto({
   subsets: ["latin"],
+  variable: "--font-roboto",
 });
 
 export const metadata: Metadata = {
@@ -25,9 +43,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${orbitron.variable} ${calSans.variable} ${roboto.variable} antialiased`}
       >
-        {children}
+        {children}d
       </body>
     </html>
   );

@@ -41,6 +41,8 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+  --font-orbitron: var(--font-orbitron-local);
+  --font-cal-sans: var(--font-cal-sans-local);
 }
 
 :root {
@@ -119,4 +121,12 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+.font-orbitron {
+  font-family: var(--font-orbitron);
+}
+
+.font-cal-sans {
+  font-family: var(--font-cal-sans);
 }
