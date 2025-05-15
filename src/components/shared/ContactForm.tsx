@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { motion } from "motion/react";
+import emailjs from "@emailjs/browser";
 import { Button } from "../ui/button";
 import {
   Form,
@@ -31,6 +32,7 @@ type FormValues = z.infer<typeof formSchema>;
 export default function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
@@ -43,24 +45,25 @@ export default function ContactForm() {
 
   const onSubmit = async (data: FormValues) => {
     setIsSubmitting(true);
+    setError(null);
 
     try {
-      // Placeholder for EmailJS implementation
-      // To implement EmailJS:
-      // 1. Install package: npm install @emailjs/browser
-      // 2. Import emailjs from '@emailjs/browser'
-      // 3. Configure with your service ID, template ID, and public key
-      // 4. Send the form using emailjs.send()
-
-      console.log("Form submitted:", data);
-
-      // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      await emailjs.send(
+        process.env.NEXT_PUBLIC_SERVICE_ID || "",
+        process.env.NEXT_PUBLIC_TEMPLATE_ID || "",
+        {
+          from_name: data.name,
+          from_email: data.email,
+          message: data.message,
+        },
+        process.env.NEXT_PUBLIC_EMAILJS_PKEY
+      );
 
       setIsSubmitted(true);
       form.reset();
     } catch (error) {
       console.error("Error sending email:", error);
+      setError("Failed to send your message. Please try again.");
     } finally {
       setIsSubmitting(false);
     }
@@ -154,6 +157,12 @@ export default function ContactForm() {
                 </FormItem>
               )}
             />
+
+            {error && (
+              <div className="p-3 text-sm bg-red-100 border border-red-300 text-red-600 rounded-md">
+                {error}
+              </div>
+            )}
 
             <Button
               type="submit"
