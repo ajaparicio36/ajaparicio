@@ -12,8 +12,8 @@ export default function Introduction() {
     >
       <div className="container mx-auto px-4 relative z-10">
         <div className="relative flex flex-col md:flex-row gap-8 items-center">
-          {/* Background Image with Overlay */}
-          <div className="absolute inset-0 opacity-30 z-0 flex justify-center items-center">
+          {/* Background Image with Overlay - positioned behind text with reduced opacity */}
+          <div className="absolute inset-0 opacity-10 z-0 flex justify-center items-center pointer-events-none">
             <div className="relative w-[clamp(280px,40vw,350px)] h-[clamp(420px,60vh,525px)]">
               <Image
                 src="/aj.png"
@@ -28,7 +28,7 @@ export default function Introduction() {
 
           {/* Introduction Text */}
           <motion.div
-            className="w-full md:w-1/2 z-10 p-6"
+            className="w-full md:w-1/2 z-10 p-6 bg-black/30 backdrop-blur-sm rounded-lg"
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -46,7 +46,7 @@ export default function Introduction() {
 
           {/* What I Do */}
           <motion.div
-            className="w-full md:w-1/2 z-10 p-6"
+            className="w-full md:w-1/2 z-10 p-6 bg-black/30 backdrop-blur-sm rounded-lg"
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}

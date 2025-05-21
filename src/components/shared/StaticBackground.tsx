@@ -4,9 +4,10 @@ import React, { useEffect, useState } from "react";
 
 export default function StaticBackground() {
   const [scrollY, setScrollY] = useState(0);
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
-    console.log("StaticBackground mounted");
+    setIsMounted(true);
 
     const handleScroll = () => {
       setScrollY(window.scrollY);
@@ -19,7 +20,6 @@ export default function StaticBackground() {
     window.addEventListener("scroll", handleScroll, { passive: true });
 
     return () => {
-      console.log("StaticBackground unmounted");
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
@@ -27,12 +27,14 @@ export default function StaticBackground() {
   // Calculate opacity based on scroll position - visible only near the top
   const opacity = Math.max(0, 1 - scrollY / 700);
 
+  // This ensures we render the same structure on server and client
+  // but the dynamic effects only happen after hydration
   return (
     <div
       id="root-background"
       style={{
-        opacity: opacity,
-        pointerEvents: "none", // Ensure it doesn't interfere with clicks
+        opacity: isMounted ? opacity : 1, // Always visible on initial render for SEO
+        pointerEvents: "none",
         transition: "opacity 0.3s ease-out",
       }}
     >

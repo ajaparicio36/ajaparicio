@@ -44,46 +44,57 @@ export default function Home() {
 
   return (
     <>
-      {/* Background only for the top section */}
+      {/* Background for the entire page */}
       <StaticBackground />
 
-      {!isMounted ? (
-        <div className="bg-black/0 text-foreground min-h-screen relative z-10">
-          <TopSection />
-          <Introduction />
-          <Technologies />
-          <Projects />
-          <Footer />
-        </div>
-      ) : (
-        <div className="bg-black/0 text-foreground relative z-10">
-          {/* Progress bar */}
+      <div className="bg-black/0 text-foreground relative z-10">
+        {/* Progress bar - only visible after hydration */}
+        {isMounted && (
           <motion.div
             className="fixed top-0 left-0 right-0 h-1 bg-primary z-50"
             style={{ scaleX: scrollYProgress }}
           />
+        )}
 
+        {/* TopSection is always visible for SEO, but wrapped in animation after hydration */}
+        {isMounted ? (
           <Section id="home">
             <TopSection />
           </Section>
-
-          <Section id="about">
-            <Introduction />
-          </Section>
-
-          <Section id="technologies">
-            <Technologies />
-          </Section>
-
-          <Section id="projects">
-            <Projects />
-          </Section>
-
-          <div className="relative z-10">
-            <Footer />
+        ) : (
+          // Non-animated version for SEO and initial render
+          <div id="home" className="min-h-screen relative z-10">
+            <TopSection />
           </div>
+        )}
+
+        {/* Other sections - can be initially hidden as they're below the fold */}
+        {isMounted ? (
+          <>
+            <Section id="about">
+              <Introduction />
+            </Section>
+
+            <Section id="technologies">
+              <Technologies />
+            </Section>
+
+            <Section id="projects">
+              <Projects />
+            </Section>
+          </>
+        ) : (
+          <div className="opacity-0 h-0 overflow-hidden">
+            <Introduction />
+            <Technologies />
+            <Projects />
+          </div>
+        )}
+
+        <div className="relative z-10">
+          <Footer />
         </div>
-      )}
+      </div>
     </>
   );
 }
