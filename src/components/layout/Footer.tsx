@@ -100,55 +100,161 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-black py-20 border-t border-white/10">
-      <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+    <footer className="relative py-20 overflow-hidden">
+      {/* Background with gradient and pattern */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/95 to-black/90" />
+
+      {/* Subtle background pattern */}
+      <div className="absolute inset-0 opacity-5">
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: `radial-gradient(circle at 1px 1px, rgba(255,255,255,0.3) 1px, transparent 0)`,
+            backgroundSize: "20px 20px",
+          }}
+        />
+      </div>
+
+      {/* Top border with gradient */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-purple-500/50 to-transparent" />
+
+      <div className="container mx-auto px-4 relative z-10">
+        {/* Header Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-5xl md:text-6xl font-orbitron mb-6 bg-gradient-to-r from-white via-purple-200 to-cyan-200 bg-clip-text text-transparent">
+            Get In Touch
+          </h2>
+          <div className="w-24 h-1.5 bg-gradient-to-r from-purple-500 via-blue-500 to-cyan-500 rounded-full mx-auto mb-6" />
+          <p className="font-calsans text-xl md:text-2xl text-center text-muted-foreground max-w-2xl mx-auto">
+            Ready to bring your next project to life? Let's collaborate and
+            create something amazing together.
+          </p>
+        </motion.div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           {/* Contact Form */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
+            className="relative"
           >
-            <h2 className="text-3xl font-orbitron mb-6 text-center md:text-left">
-              Contact Me
-            </h2>
-            <ContactForm />
+            {/* Glowing background effect */}
+            <div className="absolute -inset-4 bg-gradient-to-r from-purple-500/10 via-blue-500/10 to-cyan-500/10 rounded-2xl blur-xl" />
+
+            <div className="relative bg-black/40 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
+              <h3 className="text-2xl font-orbitron mb-6 text-center lg:text-left">
+                Send a Message
+              </h3>
+              <ContactForm />
+            </div>
           </motion.div>
 
-          {/* Social Links */}
+          {/* Connect Section */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="flex flex-col justify-center"
+            className="space-y-8"
           >
-            <h2 className="text-3xl font-orbitron mb-6 text-center md:text-left">
-              Connect
-            </h2>
+            {/* Social Links */}
+            <div>
+              <h3 className="text-2xl font-orbitron mb-6 text-center lg:text-left">
+                Connect With Me
+              </h3>
 
-            <div className="grid grid-cols-2 gap-4">
-              {socialLinks.map((link) => (
-                <Link
-                  key={link.name}
-                  href={link.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 p-3 bg-secondary/10 hover:bg-secondary/20 rounded-lg transition-colors font-calsans"
-                >
-                  {renderIcon(link.icon)}
-                  <span>{link.name}</span>
-                </Link>
-              ))}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {socialLinks.map((link, index) => (
+                  <motion.div
+                    key={link.name}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    whileHover={{ y: -2 }}
+                  >
+                    <Link
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group relative flex items-center gap-3 p-4 bg-black/30 hover:bg-black/50 rounded-xl transition-all duration-300 border border-white/10 hover:border-white/20"
+                    >
+                      {/* Glowing background on hover */}
+                      <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-500/20 to-cyan-500/20 rounded-xl blur opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+                      <div className="relative bg-white/5 p-2 rounded-lg group-hover:bg-white/10 transition-colors duration-300">
+                        {renderIcon(link.icon)}
+                      </div>
+                      <span className="font-calsans text-gray-200 group-hover:text-white transition-colors duration-300">
+                        {link.name}
+                      </span>
+                    </Link>
+                  </motion.div>
+                ))}
+              </div>
             </div>
 
-            <p className="font-roboto mt-8 text-muted-foreground text-center md:text-left">
+            {/* Quick Info */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10"
+            >
+              <h4 className="font-orbitron text-lg mb-4 text-purple-200">
+                Quick Info
+              </h4>
+              <div className="space-y-3 text-sm">
+                <div className="flex items-center gap-3">
+                  <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+                  <span className="text-gray-300">
+                    Available for freelance projects
+                  </span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="w-2 h-2 bg-blue-500 rounded-full" />
+                  <span className="text-gray-300">
+                    Response time: 24-48 hours
+                  </span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="w-2 h-2 bg-purple-500 rounded-full" />
+                  <span className="text-gray-300">Based in Philippines</span>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        </div>
+
+        {/* Bottom Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.6 }}
+          className="mt-16 pt-8 border-t border-white/10 text-center"
+        >
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            <p className="font-roboto text-muted-foreground">
               © {new Date().getFullYear()} Anthony John Aparicio. All rights
               reserved.
             </p>
-          </motion.div>
-        </div>
+            <div className="flex items-center gap-4 text-sm text-gray-400">
+              <span>Built with Next.js & Framer Motion</span>
+              <div className="w-1 h-1 bg-gray-400 rounded-full" />
+              <span>Designed with ❤️</span>
+            </div>
+          </div>
+        </motion.div>
       </div>
     </footer>
   );
