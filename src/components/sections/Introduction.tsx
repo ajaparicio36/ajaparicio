@@ -3,6 +3,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { Button } from "@/components/ui/button";
 
 export default function Introduction() {
   return (
@@ -42,6 +43,16 @@ export default function Introduction() {
               development. I do a lot of development and explore other languages
               in my free time because I love to!
             </p>
+            <Button asChild className="font-calsans" size="lg">
+              <a
+                href="/Resume.pdf"
+                download="AJ_Aparicio_Resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Download Resume
+              </a>
+            </Button>
           </motion.div>
 
           {/* What I Do */}
