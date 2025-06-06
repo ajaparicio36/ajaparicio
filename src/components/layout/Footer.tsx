@@ -132,7 +132,7 @@ export default function Footer() {
           </h2>
           <div className="w-24 h-1.5 bg-gradient-to-r from-purple-500 via-blue-500 to-cyan-500 rounded-full mx-auto mb-6" />
           <p className="font-calsans text-xl md:text-2xl text-center text-muted-foreground max-w-2xl mx-auto">
-            Ready to bring your next project to life? Let's collaborate and
+            Ready to bring your next project to life? Let&apos;s collaborate and
             create something amazing together.
           </p>
         </motion.div>

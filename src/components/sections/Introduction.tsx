@@ -91,8 +91,8 @@ export default function Introduction() {
                   {" "}
                   3+ years of experience
                 </span>{" "}
-                crafting innovative solutions. I don't just code—I architect
-                digital experiences that make a difference.
+                crafting innovative solutions. I don&apos;t just code—I
+                architect digital experiences that make a difference.
               </motion.p>
 
               <motion.p
