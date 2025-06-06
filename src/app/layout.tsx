@@ -34,7 +34,62 @@ const roboto = Roboto({
 export const metadata: Metadata = {
   title: "AJ Aparicio | Software Engineer & Web Developer",
   description:
-    "Portfolio of Anthony John Aparicio - Software Engineer, Web Developer, and UI/UX Designer",
+    "Portfolio of Anthony John Aparicio - Software Engineer, Web Developer, and UI/UX Designer specializing in full-stack development, mobile apps, and modern web technologies.",
+  keywords: [
+    "Anthony John Aparicio",
+    "AJ Aparicio",
+    "Software Engineer",
+    "Web Developer",
+    "Full Stack Developer",
+    "Mobile App Developer",
+    "TypeScript",
+    "React",
+    "Next.js",
+    "Flutter",
+    "Philippines",
+  ],
+  authors: [{ name: "Anthony John Aparicio" }],
+  creator: "Anthony John Aparicio",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://ajaparicio.com", // Replace with your actual domain
+    siteName: "AJ Aparicio Portfolio",
+    title: "AJ Aparicio | Software Engineer & Web Developer",
+    description:
+      "Portfolio of Anthony John Aparicio - Software Engineer, Web Developer, and UI/UX Designer specializing in full-stack development, mobile apps, and modern web technologies.",
+    images: [
+      {
+        url: "/og-image.png", // You'll need to create this image
+        width: 1200,
+        height: 630,
+        alt: "AJ Aparicio - Software Engineer Portfolio",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "AJ Aparicio | Software Engineer & Web Developer",
+    description:
+      "Portfolio of Anthony John Aparicio - Software Engineer, Web Developer, and UI/UX Designer",
+    images: ["/og-image.png"],
+    creator: "@ajaparicio36",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  verification: {
+    // Add your verification codes if you have them
+    // google: "your-google-verification-code",
+  },
 };
 
 export default function RootLayout({
@@ -45,6 +100,9 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark scroll-smooth">
       <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="canonical" href="https://ajaparicio.vercel.app" />
+        <link rel="icon" href="/favicon.ico" />
         <style
           dangerouslySetInnerHTML={{
             __html: `
