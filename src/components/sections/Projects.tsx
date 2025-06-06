@@ -47,6 +47,23 @@ export default function Projects() {
       image: "/projects/5.png",
       technologies: ["Firebase", "Supabase Auth", "Next.js"],
     },
+    {
+      title: "Photobooth App",
+      description:
+        "A professional photobooth application featuring collage and flipbook modes. Creates stunning photo collages or transforms video frames into printed flipbooks, with digital copies delivered through a hosted web application.",
+      image: "/projects/6.png",
+      technologies: [
+        "Vite",
+        "React",
+        "Electron",
+        "gphoto2",
+        "Neon",
+        "PostgreSQL",
+        "Next.js",
+        "node-printer",
+        "ffmpeg",
+      ],
+    },
   ];
 
   return (
